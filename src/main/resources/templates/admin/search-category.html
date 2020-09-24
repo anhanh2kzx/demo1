@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Search Category</title>
+</head>
+<body>
+	<a th:href="@{/category/add}">Add New Category</a>
+
+	<form th:action="@{/category/search}" method="get">
+		<div>
+			<input type="text" name="keyword" placeholder="Enter name...." />
+		</div>
+		<div>
+			<button type="submit">Search</button>
+		</div>
+	</form>
+	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="p : ${cate}">
+			<td th:text="${p.id}"></td>
+			<td th:text="${p.name}"></td>
+			<td>
+				<a th:href="@{'/category/update?id=' + ${p.id}}">Sua</a> 
+				<a th:href="@{'/category/delete?id=' + ${p.id}}">Xoa dung param</a> 
+				<a th:href="@{'/category/delete/' + ${p.id}}">Xoa dung path</a>  
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

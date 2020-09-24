@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Search Category</title>
+</head>
+<body>
+	<form th:action="@{/logout}">
+	<input type="submit" value="Logout" />
+	</form>
+	<a th:href="@{/product/add}">Add New Product</a>
+
+	<form th:action="@{/product/search}" method="get">
+		<div>
+			<input type="text" name="keyword" placeholder="Enter name...." />
+		</div>
+		<div>
+			<button type="submit">Search</button>
+		</div>
+	</form>
+	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Description</th>
+			<th>Category</th>
+			<th>Option
+			</th>
+		</tr>
+		<tr th:each="product : ${pro}">
+			<td th:text="${product.id}"></td>
+			<td th:text="${product.name}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.description}"></td>
+			<td th:text=${product.category.name}></td>
+			<td>
+			<a th:href="@{'/product/update?id='+${product.id}}">Update</a>
+			<a th:href="@{'/product/delete?id='+${product.id}}">Delete</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

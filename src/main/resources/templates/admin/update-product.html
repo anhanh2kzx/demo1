@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Update User</title>
+</head>
+<body>
+	<form th:action="@{/product/update}" method="post">
+		<div>
+			<label>ID</label> 
+			<input type="text" name="id" readonly="readonly" th:value="${pro.id}"/>
+		</div>
+		<div>
+			<label>Name</label> 
+			<input type="text" name="name" th:value="${pro.name}"/>
+		</div>
+			<div>
+			<label>Price</label> 
+			<input type="number" name="price" th:value="${pro.price}"/>
+		</div>
+					<div>
+			<label>Description</label> 
+			<input type="text" name="description" th:value="${pro.description}"/>
+		</div>
+			<select name="category.id">
+			<option th:each="cat :${categoryList}" th:value="${cat.id}"
+				th:text="${cat.name}"></option>
+		</select>
+		<div>
+			<button type="submit">Update</button>
+		</div>
+	</form>
+</body>
+</html>

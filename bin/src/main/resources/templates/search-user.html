@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Search User</title>
+</head>
+<body>
+	<a th:href="@{/user/add}">Add New User</a>
+
+	<form th:action="@{/user/search}" method="get">
+		<div>
+			<input type="text" name="keyword" placeholder="Enter name...." />
+		</div>
+		<div>
+			<button type="submit">Search</button>
+		</div>
+	</form>
+	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Action</th>
+		</tr>
+		<tr th:each="user : ${users}">
+			<td th:text="${user.id}"></td>
+			<td th:text="${user.name}"></td>
+			<td th:text="${user.age}"></td>
+			<td>
+				<a th:href="@{'/user/update?id=' + ${user.id}}">Sua</a> 
+				<a th:href="@{'/user/delete?id=' + ${user.id}}">Xoa dung param</a> 
+				<a th:href="@{'/user/delete/' + ${user.id}}">Xoa dung path</a>  
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

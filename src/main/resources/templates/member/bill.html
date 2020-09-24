@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="admin/template">
+<head>
+<meta charset="UTF-8" />
+<title>Bill Detail</title>
+</head>
+<body>
+	<h1>Chi tiet Bill</h1>
+	<table border="1px solid black">
+		<tr>
+			<th>ID</th>
+			<th>TEN_SP</th>
+			<th>GIA_SP</th>
+			<th>SOLUONG</th>
+			<th>THANH TIEN</th>
+			<th>OPTION</th>
+		</tr>
+
+		<tr th:each="bp:${billProducts}">
+			<td th:text="${bp.id}"></td>
+			<td th:text="${bp.product.name}"></td>
+			<td th:text="${bp.product.price}"></td>
+			<td th:text="${bp.quantity}"></td>
+			<td th:text="${bp.product.price*bp.quantity }"></td>
+			<td><a th:href="@{'/member/delete/bill?billProductId='+${bp.id}}">DELETE</a></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Products</title>
+</head>
+<body>
+	<form th:action="@{/logout}">
+	<input type="submit" value="Logout" />
+	</form>
+	<table border="1">
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Price</th>
+			<th>Description</th>
+			<th>Option
+			</th>
+		</tr>
+		<tr th:each="product : ${pro}">
+			<td th:text="${product.id}"></td>
+			<td th:text="${product.name}"></td>
+			<td th:text="${product.price}"></td>
+			<td th:text="${product.description}"></td>	
+			<td>
+			<a th:href="@{'/member/cart/addtocart/'+${product.id}}">Add to cart</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

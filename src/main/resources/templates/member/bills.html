@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title></title>
+</head>
+<body>
+<div>
+	</div>
+	<h1>Danh Sach Bill</h1>
+	
+	<table border="1px solid black">
+		<tr>
+			<th>ID</th>
+			<th>BUYDATE</th>
+			<th>DISCOUNT</th>
+			<th>PRICETOTAL</th>
+			<th>PAY</th>
+			<th>OPTION</th>
+		</tr>
+
+		<tr th:each="b:${bills}">
+			<td th:text="${b.id}"></td>
+			<td th:text="${b.buyDate}"></td>	
+			<td th:text="${b.discountPercent}+'%'"></td>
+			<td th:text="${b.priceTotal}"></td>
+			<td th:text="${b.pay}"></td>		
+			<td>
+			<a th:href="@{'/member/bill?billId='+${b.id}}">detail</a>|<a th:href="@{'/member/delete/bills?billId='+${b.id}}">DELETE</a>
+			</td>
+		</tr>
+
+	</table>
+	
+</body>
+</html>
